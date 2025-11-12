@@ -23,13 +23,11 @@ def append_test_results_to_docx(
     if os.path.exists(file_path):
         doc = Document(file_path)
     else:
-        if os.path.exists(template_path):
-            doc = Document(template_path)
-        else:
-            doc = Document()
+        doc = Document(template_path)
         doc.add_heading(f"{tc_no} - {tc_name}", level=1)
         doc.add_paragraph()
 
+    doc.add_heading("API test:", level=1)
     # ---- Request Details ----
     doc.add_heading("Request Details:", level=2)
 
