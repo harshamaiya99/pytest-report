@@ -1,6 +1,6 @@
-tc_no,tc_name,userId,title,body,post_status_code,id
-TC1,Create Post 1,1,title 1,body 1,201,101
-TC2,Create Post 2,2,title 2,body 2,201,101
-TC3,Create Post 3,3,title 3,body 2,201,101
-TC4,Create Post 4,4,title 4,body 2,201,101
-TC5,Create Post 5,5,title 5,body 2,201,101
+tc_no,tc_name,tc_description,userId,title,body,post_status_code,id
+TC1,Create Post 1,test case description,1,title 1,body 1,201,101
+TC2,Create Post 2,test case description,2,title 2,body 2,201,101
+TC3,Create Post 3,test case description,3,title 3,body 2,201,101
+TC4,Create Post 4,test case description,4,title 4,body 2,201,101
+TC5,Create Post 5,test case description,5,title 5,body 2,201,101

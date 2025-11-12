@@ -16,7 +16,7 @@ def append_test_results_to_docx(
     # Ensure results directory exists
     os.makedirs(output_dir, exist_ok=True)
 
-    file_name = f"{tc_no}_{tc_name}.docx".replace(" ", "_")
+    file_name = f"{tc_no} {tc_name}.docx"
     file_path = os.path.join(output_dir, file_name)
 
     # ---- Load template or existing doc ----
