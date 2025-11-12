@@ -1,0 +1,4 @@
+test_name,post_id,expected_status
+Get All Posts,,200
+Get Valid Post,1,200
+Get Invalid Post,999999,404
