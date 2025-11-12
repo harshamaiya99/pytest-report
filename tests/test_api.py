@@ -38,7 +38,7 @@ def test_create_posts(data):
 
     response = requests.post(BASE_URL, headers=headers, json=payload)
 
-    print(f"\n{'=' * 100}")
+    print(f"\n{'=' * 80}")
     print(f"Test Case: {tc_no} - {tc_name}")
 
     print("\nRequest:")
@@ -53,7 +53,7 @@ def test_create_posts(data):
     print("\nRequest Body:")
     print(json.dumps(payload, indent=2))
 
-    print(f"{'=' * 100}")
+    print(f"{'=' * 80}")
 
     print("\nResponse:")
     print(f"\nExpected Status: {expected_status}, Actual: {response.status_code}")

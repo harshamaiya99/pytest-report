@@ -21,4 +21,5 @@ dist/
 pip-wheel-metadata/
 .eggs/
 
-results
+results/
+reports/
