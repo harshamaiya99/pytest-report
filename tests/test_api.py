@@ -19,57 +19,65 @@ def read_test_data():
 
 
 @pytest.mark.parametrize("data", read_test_data())
-def test_posts(data):
+def test_create_posts(data):
+    """POST request test"""
 
-    post_id = data["post_id"].strip()
-    expected_status = int(data["expected_status"])
+    tc_no = data["tc_no"].strip()
+    tc_name = data.get("tc_name", f"TestCase_{tc_no}")
+    user_id = data["userId"].strip()
+    title = data["title"].strip()
+    body = data["body"].strip()
+    expected_status = int(data["post_status_code"].strip())
 
-    # Build full URL
-    url = f"{BASE_URL}/{post_id}" if post_id else BASE_URL
+    # ---- Request Payload ----
+    payload = {
+        "userId": int(user_id),
+        "title": title,
+        "body": body
+    }
 
     headers = {
         "Accept": "application/json",
+        "Content-Type": "application/json",
         "User-Agent": "pytest-automation-client"
     }
 
-    # Optionally support POST or PATCH later
-    response = requests.get(url, headers=headers)
+    # ---- Send POST Request ----
+    response = requests.post(BASE_URL, headers=headers, json=payload)
 
     print(f"\n{'=' * 100}")
-    print(f"Test: {data['test_name']}")
-    print(f"URL: {url}")
-    print(f"Expected Status: {expected_status}, Actual: {response.status_code}")
-    print(f"{'=' * 100}\n")
+    print(f"Test Case: {tc_no} - {tc_name}")
+
+    print("\nRequest:")
+    print(f"\nURL: {BASE_URL}")
 
     # ---- Request Headers ----
-    print("Request Headers:")
+    print("\nRequest Headers:")
     for key, value in response.request.headers.items():
         print(f"{key}: {value}")
 
-    # ---- Request Body (if present) ----
-    if response.request.body:
-        print("\nRequest Body:")
-        try:
-            print(json.dumps(json.loads(response.request.body), indent=2))
-        except Exception:
-            print(response.request.body)
+    # ---- Request Body ----
+    print("\nRequest Body:")
+    print(json.dumps(payload, indent=2))
 
-    print(f"{'=' * 100}\n")
+    print(f"{'=' * 100}")
 
+    print("\nResponse:")
+    print(f"\nExpected Status: {expected_status}, Actual: {response.status_code}")
     # ---- Response Headers ----
     print("\nResponse Headers:")
     for key, value in response.headers.items():
         print(f"{key}: {value}")
 
-    # ---- Response Body (if present) ----
-    if response.text.strip():
-        print("\nResponse Body:")
-        try:
-            print(json.dumps(response.json(), indent=2))
-        except ValueError:
-            print(response.text)
+    # ---- Response Body ----
+    print("\nResponse Body:")
+    try:
+        print(json.dumps(response.json(), indent=4))
+    except ValueError:
+        print(response.text)
 
-    # ---- Assertion ----
+    # ---- Assertions ----
     assert response.status_code == expected_status, (
         f"FAILED: Expected {expected_status}, got {response.status_code}"
     )
+

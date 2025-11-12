@@ -1,4 +1,6 @@
-test_name,post_id,expected_status
-Get All Posts,,200
-Get Valid Post,1,200
-Get Invalid Post,999999,401
+tc_no,tc_name,userId,title,body,post_status_code,id
+TC1,Create Post 1,1,title 1,body 1,201,101
+TC2,Create Post 2,2,title 2,body 2,201,101
+TC3,Create Post 3,3,title 3,body 2,201,101
+TC4,Create Post 4,4,title 4,body 2,201,101
+TC5,Create Post 5,5,title 5,body 2,201,101
