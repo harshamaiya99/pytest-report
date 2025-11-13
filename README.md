@@ -31,7 +31,7 @@ This project is an API test automation framework built using Python and Pytest. 
 1. Place your test data in `data/test_data.csv` following the specified format.
 2. Run the tests using:
    ```sh
-   pytest tests/test_api.py
+   pytest tests/test_api_post.py
    ```
     ```sh
    pytest -v --html=reports/test_report.html --self-contained-html
