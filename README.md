@@ -34,8 +34,15 @@ This project is an API test automation framework built using Python and Pytest. 
    pytest tests/test_api_post.py
    ```
     ```sh
-   pytest -v --html=reports/test_report.html --self-contained-html
+   pytest -v --tb=no --html=reports/test_report.html --self-contained-html tests/test_api_get.py
    ```
+| Flag                    | Meaning                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| `-v`                    | Verbose test names                                                                      |
+| `--tb=no`               | **Disable pytest traceback** — only shows your printed output after “Captured stdout call” |
+| `--html=...`            | Generate HTML report                                                                    |
+| `--self-contained-html` | Embed all CSS/JS inside the HTML report (single standalone file)                        |
+| `tests/test_api_get.py` | Path to the test file to execute                                                        |
 
 3. The test results will be saved in the `results` directory and a detailed HTML report will be generated in the `reports` directory.
 

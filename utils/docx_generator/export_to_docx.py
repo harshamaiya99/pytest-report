@@ -3,6 +3,8 @@ import json
 from datetime import datetime
 from docx import Document
 
+TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), "template.docx")
+
 def _pretty_json(obj):
     try:
         return json.dumps(obj, indent=4, ensure_ascii=False)

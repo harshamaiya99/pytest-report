@@ -1,5 +1,5 @@
 tc_no,tc_name,tc_description,postId,expected_status_code,id
-TC1,Create Post 1,test case description,1,200,101
+TC1,Create Post 1,test case description,1,210,101
 TC2,Create Post 2,test case description,2,200,101
 TC3,Create Post 3,test case description,3,200,101
 TC4,Create Post 4,test case description,4,200,101

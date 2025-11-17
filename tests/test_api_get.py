@@ -50,6 +50,7 @@ def test_get_post_by_id(data):
 
     print("\nResponse:")
     print(f"\nExpected Status: {expected_status}, Actual: {response.status_code}")
+
     # ---- Response Headers ----
     print("\nResponse Headers:")
     for key, value in response.headers.items():
@@ -62,18 +63,18 @@ def test_get_post_by_id(data):
     except ValueError:
         print(response.text)
 
+    # ============================
+    # ASSERTION + WRITE ON SUCCESS
+    # ============================
     try:
         assert response.status_code == expected_status
         assertion_result = f"PASSED: Expected {expected_status}, got {response.status_code}"
-    except AssertionError as e:
-        assertion_result = f"FAILED: {e}"
-        raise
-    finally:
+
+        # ---- Only write DOCX if PASSED ----
         request_details = {
             "URL": url,
             "Method": "GET",
             "Headers": dict(response.request.headers),
-            # No 'Body' key for GET (export_to_docx treats missing Body as <none>)
         }
 
         try:
@@ -96,3 +97,8 @@ def test_get_post_by_id(data):
             output_dir=TEST_RESULTS_DIR,
             template_path=TEMPLATE_PATH
         )
+
+    except AssertionError as e:
+        assertion_result = f"FAILED: {e}"
+        # Do not write docx on failure
+        raise
